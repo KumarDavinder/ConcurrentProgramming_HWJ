@@ -1,0 +1,48 @@
+Nome e Cognome: DAVINDER KUMAR
+Matricola: 460825
+
+Descrizione della soluzione proposta per HWJ:
+
+I risultati sotto riportati fanno riferimento ad un albero binario bilanciato ma nella fase di testing ho tenuto conto anche di eventuali alberi sbilanciati.
+La soluzione proposta si adatta alla macchina sulla quale viene eseguita, ovvero il numero di thread creati non è predefinito ma dipende dal numero di core presenti sulla macchina. 
+Per il primo e il secondo esercizio è stata utilizzata una barriera per la condizione di terminazione, ovvero la terminazione avviene a seguito dell'esecuzione dell'azione specificata in CyclicBarrier.
+Tale azione viene eseguita quando tutti i thread hanno effettuato "await".
+Per l'esercizio di Fork Join il valore SEQUENTIAL_THRESHOLD è stato fissato a 5000.
+L'implementazione con Stream è incompleta, ovvero non si è ancora sfruttato la concorrenza e l'esecuzione è seriale, questo è possibile notarlo anche dai tempi di esecuzione riportati.
+Caratteristiche della piattaforma di sviluppo: MacBook Pro 2,26 GHz Intel Core 2 Duo
+Ad ogni esecuzione viene stampata la seguente barra di test.
+Se il valore stampato è true allora tutti i test funzionano correttamente altrimenti viene segnalato il test che fallisce.
+
+====================ALL TESTS==========================
+true (è stata creata una JUnit Test Suite)
+
+====================HWJ==========================
+TREE
+Number nodes 131071
+Depth: 16
+Warm_up = 3
+********************TEMPO DI ESECUZIONE*******************
+Serial time = 16742.0 ms
+Unlimited Memory time = 8845.0 ms
+Limited Memory time = 8201.0 ms
+Fork Join time = 8665.0 ms
+Stream time = 20093.0 ms
+
+*****************SOMME*****************
+Somma esecuzione Seriale = 588929
+Somma Unlimited Memory = 588929
+Somma Limited Memory = 588929
+Somma Fork Join = 588929
+Somma Stream = 588929
+
+*****************SPEEDUP******************
+Speedup Unlimited Memory = 1.8928208027133975
+Speedup Limited Memory = 2.0414583587367394
+Speedup Fork Join = 1.932140796306982
+Speedup Stream = 0.8332255014184045 non è lo speedUp perché l'implementazione con gli Stream è seriale
+
+********************TEMPO IMPIEGATO*******************
+tempo impiegato = 4 min, 36 sec
+
+Per ottenere valori maggiori di speedup si deve passare ad una macchina avente più processori.
+Poiché ogni problema ha sempre una parte che è intrinsecamente seriale la legge di Amdahl ci pone dei limiti, ovvero sottolinea che dopo un certo numero di processori è inutile considerare altre macchine con un numero di processori maggiore perché lo speedup varia di poco.
